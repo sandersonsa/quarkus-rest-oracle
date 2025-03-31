@@ -40,6 +40,7 @@ public class EmployeeResource {
     @Produces("application/json")
     @Transactional
     public Employee create(Employee employee) {
+        System.out.println("Creating: " + employee);
         return employeeRepository.save(employee);
     }
 
