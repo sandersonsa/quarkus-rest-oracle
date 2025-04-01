@@ -21,19 +21,19 @@ public class EmployeeService {
     }
 
     @Scheduled(every="60s")     
-    void enviarRegistroTimer() {
-        int contador = counter.incrementAndGet(); 
-        for (int i=0; i < 1000; i++) {
-            System.out.println("Enviando registro: " + contador);
-            enviarRegistro(contador);
+    void enviarRegistroTimer() {        
+        for (int i=0; i < 1000; i++) {            
+            enviarRegistro();
         }
     }
 
-    private void enviarRegistro(Integer id) {  
+    private void enviarRegistro() {  
+        int contador = counter.incrementAndGet(); 
+        System.out.println("Enviando registro: " + contador);
         Employee c = new Employee();
         c.setEmployeeName("José Roberto");
         c.setCity("Madrid");
-        c.setId(Long.valueOf(id));
+        c.setId(Long.valueOf(contador));
         employeeRepository.save(c); 
     }
 
